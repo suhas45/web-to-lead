@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thanks — we've got it</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#151922;
+    --slate:#1C2333;
+    --cloud:#F4F6F9;
+    --paper:#FFFFFF;
+    --line:#D8DCE3;
+    --steel:#2D5F8A;
+    --signal:#E8A33D;
+    --muted:#6B7280;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;height:100%;}
+  body{
+    background:var(--cloud);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+    padding:24px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .card{
+    width:100%;
+    max-width:460px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:48px 40px;
+    text-align:center;
+    box-shadow:0 1px 2px rgba(20,24,33,0.04), 0 12px 32px -12px rgba(20,24,33,0.10);
+  }
+  .icon{
+    width:52px;height:52px;
+    border-radius:50%;
+    background:var(--slate);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 24px;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--steel);
+    margin-bottom:14px;
+  }
+  h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:28px;
+    font-weight:700;
+    margin:0 0 12px;
+    letter-spacing:-0.01em;
+  }
+  p{
+    font-size:15px;
+    line-height:1.6;
+    color:var(--muted);
+    margin:0 0 28px;
+  }
+  .steps{
+    text-align:left;
+    background:var(--cloud);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:18px 20px;
+    margin-bottom:28px;
+  }
+  .steps div{
+    font-size:13px;
+    color:#3A4150;
+    padding:6px 0;
+    display:flex;
+    gap:10px;
+  }
+  .steps div span{
+    font-family:'IBM Plex Mono',monospace;
+    color:var(--signal);
+    font-size:12px;
+  }
+  a.home{
+    display:inline-block;
+    font-size:13.5px;
+    font-weight:600;
+    color:#fff;
+    background:var(--ink);
+    text-decoration:none;
+    padding:11px 22px;
+    border-radius:7px;
+    transition:background .15s ease;
+  }
+  a.home:hover{ background:#000; }
+</style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="icon">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11l5 5 9-11" stroke="#E8A33D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="eyebrow">Submission received</div>
+    <h1>Thanks — we've got it.</h1>
+    <p>Your details were logged as a new lead. A specialist will review your submission and reach out shortly.</p>
+
+    <div class="steps">
+      <div><span>01</span> Logged in our CRM as a new lead</div>
+      <div><span>02</span> Reviewed within 1 business day</div>
+      <div><span>03</span> Routed to the right specialist</div>
+      <div><span>04</span> We follow up by email or phone</div>
+    </div>
+
+    <a class="home" href="#">Back to homepage</a>
+  </div>
+
+</body>
+</html>
