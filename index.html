@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact us</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#151922;
+    --cloud:#F4F6F9;
+    --paper:#FFFFFF;
+    --line:#E3E6EB;
+    --line-soft:#EEF0F3;
+    --steel:#2D5F8A;
+    --signal:#E8A33D;
+    --muted:#6B7280;
+    --radius:12px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--cloud);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:48px 20px;
+  }
+
+  .card{
+    width:100%;
+    max-width:460px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:36px 36px 28px;
+    box-shadow:0 1px 2px rgba(20,24,33,0.03), 0 16px 40px -18px rgba(20,24,33,0.14);
+  }
+
+  /* header */
+  .head{
+    margin-bottom:26px;
+  }
+  .head h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:22px;
+    font-weight:600;
+    margin:0 0 5px;
+    letter-spacing:-0.01em;
+  }
+  .head p{
+    font-size:13.5px;
+    color:var(--muted);
+    margin:0;
+    line-height:1.5;
+  }
+
+  /* progress */
+  .progress{
+    margin-bottom:26px;
+  }
+  .progress-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:7px;
+  }
+  .progress-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+  .progress-pct{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--steel);
+    font-weight:500;
+  }
+  .progress-track{
+    height:4px;
+    background:var(--line-soft);
+    border-radius:3px;
+    overflow:hidden;
+  }
+  .progress-fill{
+    height:100%;
+    width:0%;
+    background:var(--signal);
+    border-radius:3px;
+    transition:width .3s ease;
+  }
+
+  /* form */
+  form{
+    display:flex;
+    flex-direction:column;
+  }
+  .section-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:#9AA1AE;
+    margin:4px 0 14px;
+  }
+  .section-label:not(:first-of-type){
+    margin-top:8px;
+    padding-top:20px;
+    border-top:1px solid var(--line-soft);
+  }
+
+  .row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+  }
+  .field{
+    margin-bottom:16px;
+  }
+  .field:last-child{ margin-bottom:0; }
+  label{
+    font-size:12.5px;
+    font-weight:500;
+    color:#3A4150;
+    display:block;
+    margin-bottom:6px;
+  }
+  .req{
+    color:var(--signal);
+    margin-left:2px;
+  }
+  input[type="text"]{
+    width:100%;
+    padding:10px 13px;
+    font-family:'Inter',sans-serif;
+    font-size:14px;
+    color:var(--ink);
+    background:#FBFBFC;
+    border:1px solid var(--line);
+    border-radius:8px;
+    outline:none;
+    transition:border-color .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  input[type="text"]:hover{ border-color:#C7CCD3; }
+  input[type="text"]:focus{
+    border-color:var(--steel);
+    background:#fff;
+    box-shadow:0 0 0 3px rgba(45,95,138,0.10);
+  }
+  input.invalid{
+    border-color:#C0492E;
+    box-shadow:0 0 0 3px rgba(192,73,46,0.08);
+  }
+  .err-msg{
+    display:none;
+    font-size:11.5px;
+    color:#C0492E;
+    margin-top:5px;
+    font-family:'IBM Plex Mono',monospace;
+  }
+  .field.error .err-msg{display:block;}
+
+  button[type="submit"]{
+    width:100%;
+    margin-top:24px;
+    padding:13px 18px;
+    background:var(--ink);
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    font-family:'Inter',sans-serif;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    transition:background .15s ease, transform .1s ease;
+  }
+  button[type="submit"]:hover{ background:#000; }
+  button[type="submit"]:active{ transform:translateY(1px); }
+  button[type="submit"] svg{ transition:transform .15s ease; }
+  button[type="submit"]:hover svg{ transform:translateX(3px); }
+
+  .fine{
+    margin-top:16px;
+    font-size:11.5px;
+    color:var(--muted);
+    line-height:1.6;
+    text-align:center;
+  }
+  .fine strong{ color:#3A4150; }
+
+  @media (max-width:480px){
+    .row{grid-template-columns:1fr;}
+    .card{padding:28px 22px 24px;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="card">
+
+    <div class="head">
+      <h1>Contact details</h1>
+      <p>Fields marked <span class="req">*</span> are required — takes about a minute.</p>
+    </div>
+
+    <div class="progress">
+      <div class="progress-row">
+        <span class="progress-label">Form completeness</span>
+        <span class="progress-pct" id="pct">0%</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+
+    <!--  ----------------------------------------------------------------------  -->
+    <!--  Salesforce Web-to-Lead form — action / hidden fields unchanged.          -->
+    <!--  ----------------------------------------------------------------------  -->
+    <form id="leadForm" action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DHp00000L05Q5" method="POST" novalidate>
+      <input type="hidden" name="oid" value="00DHp00000L05Q5">
+      <input type="hidden" name="retURL" value="https://suhas45.github.io/web-to-lead/thank-you.html">
+      <!--
+      <input type="hidden" name="debug" value=1>
+      <input type="hidden" name="debugEmail" value="bangirajesh454@gmail.com">
+      -->
+
+      <div class="section-label">Personal info</div>
+
+      <div class="row">
+        <div class="field" data-required="true">
+          <label for="first_name">First name</label>
+          <input type="text" id="first_name" maxlength="40" name="first_name">
+        </div>
+        <div class="field" data-required="true">
+          <label for="last_name">Last name<span class="req">*</span></label>
+          <input type="text" id="last_name" maxlength="80" name="last_name">
+          <div class="err-msg">Last name is required.</div>
+        </div>
+      </div>
+
+      <div class="field" data-required="true" data-type="email">
+        <label for="email">Email<span class="req">*</span></label>
+        <input type="text" id="email" maxlength="80" name="email">
+        <div class="err-msg">Enter a valid email address.</div>
+      </div>
+
+      <div class="field">
+        <label for="phone">Phone</label>
+        <input type="text" id="phone" maxlength="40" name="phone">
+      </div>
+
+      <div class="section-label">Company</div>
+
+      <div class="field" data-required="true">
+        <label for="company">Company<span class="req">*</span></label>
+        <input type="text" id="company" maxlength="40" name="company">
+        <div class="err-msg">Company is required.</div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="city">City</label>
+          <input type="text" id="city" maxlength="40" name="city">
+        </div>
+        <div class="field">
+          <label for="state">State / Province</label>
+          <input type="text" id="state" maxlength="20" name="state">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="country">Country</label>
+        <input type="text" id="country" maxlength="40" name="country">
+      </div>
+
+      <input type="hidden" id="lead_source" name="lead_source" value="Web">
+
+      <button type="submit">
+        Send inquiry
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+      <div class="fine">Submissions sync directly to our <strong>Salesforce</strong> pipeline as a new lead.</div>
+    </form>
+
+  </div>
+
+<script>
+  const form = document.getElementById('leadForm');
+  const fields = Array.from(form.querySelectorAll('.field'));
+  const requiredFields = fields.filter(f => f.dataset.required === "true");
+  const fill = document.getElementById('progressFill');
+  const pct = document.getElementById('pct');
+
+  function isEmailValid(v){
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  }
+
+  function fieldValue(f){
+    const input = f.querySelector('input');
+    return input ? input.value.trim() : '';
+  }
+
+  function updateProgress(){
+    let filled = 0;
+    requiredFields.forEach(f => {
+      const v = fieldValue(f);
+      const okType = f.dataset.type === 'email' ? isEmailValid(v) : v.length > 0;
+      if(okType) filled++;
+    });
+    const percent = Math.round((filled / requiredFields.length) * 100);
+    fill.style.width = percent + '%';
+    pct.textContent = percent + '%';
+  }
+
+  function validateField(f){
+    const v = fieldValue(f);
+    const input = f.querySelector('input');
+    let valid = true;
+    if(f.dataset.required === "true"){
+      if(f.dataset.type === 'email'){
+        valid = isEmailValid(v);
+      } else {
+        valid = v.length > 0;
+      }
+    }
+    f.classList.toggle('error', !valid && document.activeElement !== input);
+    input.classList.toggle('invalid', !valid && f.dataset.touched === "true");
+    return valid;
+  }
+
+  fields.forEach(f => {
+    const input = f.querySelector('input');
+    if(!input) return;
+    input.addEventListener('input', () => { updateProgress(); });
+    input.addEventListener('blur', () => {
+      f.dataset.touched = "true";
+      validateField(f);
+    });
+  });
+
+  form.addEventListener('submit', (e) => {
+    let allValid = true;
+    requiredFields.forEach(f => {
+      f.dataset.touched = "true";
+      const ok = validateField(f);
+      if(!ok) allValid = false;
+    });
+    if(!allValid){
+      e.preventDefault();
+      const firstInvalid = requiredFields.find(f => f.classList.contains('error') || f.querySelector('input').classList.contains('invalid'));
+      if(firstInvalid) firstInvalid.querySelector('input').focus();
+    }
+  });
+
+  updateProgress();
+</script>
+
+</body>
+</html>
